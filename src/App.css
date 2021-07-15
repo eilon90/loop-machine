@@ -1,38 +1,279 @@
-.App {
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #062a44;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-areas: 
+  "h h"
+  "r pb"
+  "r pp";
+}
+
+#header {
+  grid-area: h;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#playing-board {
+  grid-area: pb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#play-table {
+  background-color: silver;
+}
+
+#playPause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: pp;
+}
+
+#record {
+  grid-area: r;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+#record-buttons {
+  margin-top: 20vh;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+}
+
+.record-button {
+  width: 100%;
+}
+
+#SamplesButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#board-container {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  overflow: auto;
+}
+
+.sample-button {
+  width: 2vw;
+  cursor: pointer;
+  background-color: #fc2b97;
+  padding: 20%;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.sample-button-clicked {
+  width: 2vw;
+  cursor: pointer;
+  background-color: #24db9d;
+  padding: 20%;
+  border-radius: 50%;
+}
+
+#position-cursor {
+  position: relative;
+  z-index: 2;
+  background-color: rgb(145, 58, 0);
+  height: 97%;
+  width: 2px;
+  margin-top: 1%;
+  top: -100%
+}
+
+.cursor {
+  margin-left: 1%;
+}
+
+.cursor.on-playing {
+  animation-name: moveCursor;
+  animation-duration: 7.95s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes moveCursor {
+  from {
+    margin-left: 1%;
+  }
+  to {
+    margin-left: 98%;
+  }
+}
+
+#play-button {
+  color: #062a44;
+  font-size: 500%;
+  background-color: #24db9d;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 3%;
+}
+
+#stop-button {
+  color: #062a44;
+  font-size: 500%;
+  background-color: #fc2b97;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#play-button-clicked {
+  color: #062a44;
+  font-size: 500%;
+  background-color: #2cb889;
+  border-radius: 50%;
+  cursor: auto;
+  margin-right: 3%;
+}
+
+#stop-button-clicked {
+  color: #062a44;
+  font-size: 500%;
+  background-color: #d34b91;
+  border-radius: 50%;
+  cursor: auto;
+}
+
+.active-line {
+  background-color: rgb(255, 230, 1);
+  height: 10px;
+}
+
+#sample-lines {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#select-form {
+  width: 80%;
+  background-color: #e7e6a7;
+  border-radius: 10px;
+  margin-top: 30%;
+}
+
+#saved-select{
+  height: 0;
+}
+
+#title {
+  font-family: 'Lobster', cursive;
+  font-size: 500%;
+  margin: 0;
+  color: #fcca04;
+}
+
+#dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+#save-dialog-title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#inputs {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#user-name {
+  margin-right: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#recording-name {
+  margin-right: 2%;
+
+}
+
+@media(max-width: 768px){
+  #app {
+    grid-template-rows: 1fr 5fr 1fr 1fr;
+    grid-template-areas: 
+    "h h"
+    "pb pb"
+    "pp pp"
+    "r r";
   }
-  to {
-    transform: rotate(360deg);
+  
+  #record {
+    align-items: center;
+  }
+  
+  #record-buttons {
+    margin-top: 0;
+    height: 50%;
+    justify-content: space-between;
+    width: 90%;
+  }
+
+  #playPause {
+    height: 50%;
+  }
+  
+  .record-button {
+    width: 90%;
+  }
+  
+  #play-button {
+    font-size: 300%;
+  }
+  
+  #stop-button {
+    font-size: 300%;
+  }
+  
+  #play-button-clicked {
+    font-size: 300%;
+  }
+  
+  #stop-button-clicked {
+    font-size: 300%;
+  }
+  
+  #select-form {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+  
+  
+  #title {
+    font-family: 'Lobster', cursive;
+    font-size: 300%;
+    margin: 0;
+    color: #fcca04;
   }
 }

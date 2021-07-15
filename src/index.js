@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'mobx-react';
+import {Samples as samples} from './stores/Samples';
+import {Record as record} from './stores/Record';
+
+const Samples = new samples();
+const Record = new record(Samples);
+
+const stores = {
+  Samples,
+  Record
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider {...stores}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
